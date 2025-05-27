@@ -1,0 +1,112 @@
+using System.Text.Json.Serialization;
+
+namespace GemiNet;
+
+[JsonSourceGenerationOptions(
+    GenerationMode = JsonSourceGenerationMode.Default,
+    DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
+    WriteIndented = false,
+    UseStringEnumConverter = true)]
+[JsonSerializable(typeof(ErrorResponse))]
+[JsonSerializable(typeof(ErrorResponseData))]
+
+// Models
+[JsonSerializable(typeof(Model))]
+[JsonSerializable(typeof(ListModelsRequest))]
+[JsonSerializable(typeof(ListModelsResponse))]
+
+// Generating content
+[JsonSerializable(typeof(GenerateContentRequest))]
+[JsonSerializable(typeof(GenerateContentResponse))]
+[JsonSerializable(typeof(GenerateContentResponsePromptFeedback))]
+[JsonSerializable(typeof(BlockReason))]
+[JsonSerializable(typeof(GenerateContentResponseUsageMetadata))]
+[JsonSerializable(typeof(Candidate))]
+[JsonSerializable(typeof(FinishReason))]
+[JsonSerializable(typeof(GroundingAttribution))]
+[JsonSerializable(typeof(AttributionSourceId))]
+[JsonSerializable(typeof(GroundingPassageId))]
+[JsonSerializable(typeof(SemanticRetrieverChunk))]
+[JsonSerializable(typeof(GroundingMetadata))]
+[JsonSerializable(typeof(SearchEntryPoint))]
+[JsonSerializable(typeof(GroundingChunk))]
+[JsonSerializable(typeof(Web))]
+[JsonSerializable(typeof(GroundingSupport))]
+[JsonSerializable(typeof(Segment))]
+[JsonSerializable(typeof(RetrievalMetadata))]
+[JsonSerializable(typeof(LogprobsResult))]
+[JsonSerializable(typeof(LogprobsResultTopCandidates))]
+[JsonSerializable(typeof(LogprobsResultCandidate))]
+[JsonSerializable(typeof(UrlRetrievalMetadata))]
+[JsonSerializable(typeof(UrlRetrievalContext))]
+[JsonSerializable(typeof(CitationMetadata))]
+[JsonSerializable(typeof(CitationSource))]
+[JsonSerializable(typeof(GenerationConfig))]
+[JsonSerializable(typeof(Modality))]
+[JsonSerializable(typeof(ModalityTokenCount))]
+[JsonSerializable(typeof(SpeechConfig))]
+[JsonSerializable(typeof(VoiceConfig))]
+[JsonSerializable(typeof(PrebuiltVoiceConfig))]
+[JsonSerializable(typeof(ThinkingConfig))]
+[JsonSerializable(typeof(MediaResolution))]
+[JsonSerializable(typeof(HarmCategory))]
+[JsonSerializable(typeof(SafetyRating))]
+[JsonSerializable(typeof(HarmProbability))]
+[JsonSerializable(typeof(SafetySetting))]
+[JsonSerializable(typeof(HarmBlockThreshold))]
+
+// Tokens
+[JsonSerializable(typeof(CountTokensRequest))]
+[JsonSerializable(typeof(CountTokensResponse))]
+
+// Files
+[JsonSerializable(typeof(UploadFileRequest))]
+[JsonSerializable(typeof(UploadFileResponse))]
+[JsonSerializable(typeof(GetUploadUrlRequest))]
+[JsonSerializable(typeof(GetFileRequest))]
+[JsonSerializable(typeof(ListFilesRequest))]
+[JsonSerializable(typeof(DeleteFileRequest))]
+[JsonSerializable(typeof(UploadFileResponse))]
+[JsonSerializable(typeof(ListFilesResponse))]
+[JsonSerializable(typeof(File))]
+[JsonSerializable(typeof(VideoFileMetadata))]
+[JsonSerializable(typeof(FileState))]
+[JsonSerializable(typeof(FileSource))]
+[JsonSerializable(typeof(FileStatus))]
+
+// Caching
+[JsonSerializable(typeof(ListCachedContentsResponse))]
+[JsonSerializable(typeof(PatchChachedContentConfig))]
+[JsonSerializable(typeof(CachedContent))]
+[JsonSerializable(typeof(Content))]
+[JsonSerializable(typeof(Contents))]
+[JsonSerializable(typeof(Part))]
+[JsonSerializable(typeof(Blob))]
+[JsonSerializable(typeof(FunctionCall))]
+[JsonSerializable(typeof(FunctionResponse))]
+[JsonSerializable(typeof(FileData))]
+[JsonSerializable(typeof(ExecutableCode))]
+[JsonSerializable(typeof(ExecutableCodeLanguage))]
+[JsonSerializable(typeof(CodeExecutionResult))]
+[JsonSerializable(typeof(CodeExecutionOutcome))]
+[JsonSerializable(typeof(Tool))]
+[JsonSerializable(typeof(FunctionDeclaration))]
+[JsonSerializable(typeof(Schema))]
+[JsonSerializable(typeof(DataType))]
+[JsonSerializable(typeof(GoogleSearchRetrieval))]
+[JsonSerializable(typeof(DynamicRetrievalConfig))]
+[JsonSerializable(typeof(DynamicRetrievalMode))]
+[JsonSerializable(typeof(CodeExecution))]
+[JsonSerializable(typeof(GoogleSearch))]
+[JsonSerializable(typeof(ToolConfig))]
+[JsonSerializable(typeof(FunctionCallingConfig))]
+[JsonSerializable(typeof(FunctionCallingMode))]
+[JsonSerializable(typeof(CachingUsageMetadata))]
+
+// Embbedings
+[JsonSerializable(typeof(EmbedContentRequestJsonData))]
+[JsonSerializable(typeof(BatchEmbedContentRequestJsonData))]
+[JsonSerializable(typeof(EmbedContentResponse))]
+[JsonSerializable(typeof(ContentEmbedding))]
+[JsonSerializable(typeof(TaskType))]
+public partial class GemiNetJsonSerializerContext : JsonSerializerContext;
