@@ -6,7 +6,7 @@ using System.Text.Json;
 
 namespace GemiNet;
 
-public class GoogleGenAI
+public class GoogleGenAI : IDisposable
 {
     sealed class GoogleGenAIModels(GoogleGenAI ai) : IModels
     {
@@ -465,5 +465,10 @@ public class GoogleGenAI
     {
         var error = (await response.Content.ReadFromJsonAsync(GemiNetJsonSerializerContext.Default.GetTypeInfo<ErrorResponse>()!, cancellationToken).ConfigureAwait(ConfigureAwait))!.Error;
         throw new GemiNetException(error.Message);
+    }
+
+    public void Dispose()
+    {
+        HttpClient.Dispose();
     }
 }
