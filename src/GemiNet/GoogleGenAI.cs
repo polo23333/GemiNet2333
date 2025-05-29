@@ -420,6 +420,16 @@ public class GoogleGenAI
         }
     }
 
+    sealed class GoogleGenAILive(GoogleGenAI ai) : ILive
+    {
+        public async Task<ILiveSession> ConnectAsync(BidiGenerateContentSetup request, CancellationToken cancellationToken = default)
+        {
+            var live = new LiveSession(ai);
+            await live.ConnectAsync(request, cancellationToken);
+            return live;
+        }
+    }
+
     public GoogleGenAI() : this(new HttpClientHandler(), true)
     {
     }
@@ -435,6 +445,7 @@ public class GoogleGenAI
         Models = new GoogleGenAIModels(this);
         Files = new GoogleGenAIFiles(this);
         Caches = new GoogleGenAICaches(this);
+        Live = new GoogleGenAILive(this);
     }
 
     public string ApiKey { get; set; } = Environment.GetEnvironmentVariable("GEMINI_API_KEY") ?? "";
@@ -444,6 +455,7 @@ public class GoogleGenAI
     public IModels Models { get; }
     public IFiles Files { get; }
     public ICaches Caches { get; }
+    public ILive Live { get; }
 
     public HttpClient HttpClient { get; }
 
