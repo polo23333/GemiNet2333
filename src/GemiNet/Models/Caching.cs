@@ -334,6 +334,12 @@ public record Schema
 
     [JsonPropertyName("maximum")]
     public double? Maximum { get; init; }
+
+    public static Schema FromJsonElement(JsonElement element)
+    {
+        return JsonSerializer.Deserialize(element, GemiNetJsonSerializerContext.Default.GetTypeInfo<Schema>()!)
+            ?? new() { Type = DataType.Unspecified };
+    }
 }
 
 

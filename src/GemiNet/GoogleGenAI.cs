@@ -12,7 +12,7 @@ public class GoogleGenAI : IDisposable
     {
         public async Task<Model> GetAsync(string name, CancellationToken cancellationToken = default)
         {
-            var response = await ai.HttpClient.GetAsync($"{BaseUrl}/{name}?key={ai.ApiKey}", cancellationToken)
+            var response = await ai.HttpClient.GetAsync($"{ai.BaseUrl}/{name}?key={ai.ApiKey}", cancellationToken)
                 .ConfigureAwait(ai.ConfigureAwait);
 
             if (!response.IsSuccessStatusCode) await ai.ThrowFromErrorResponseAsync(response, cancellationToken);
@@ -33,7 +33,7 @@ public class GoogleGenAI : IDisposable
                 (null, null) => $"key={ai.ApiKey}",
             };
 
-            var response = await ai.HttpClient.GetAsync($"{BaseUrl}/models?{queryParameters}", cancellationToken)
+            var response = await ai.HttpClient.GetAsync($"{ai.BaseUrl}/models?{queryParameters}", cancellationToken)
                 .ConfigureAwait(ai.ConfigureAwait);
 
             if (!response.IsSuccessStatusCode) await ai.ThrowFromErrorResponseAsync(response, cancellationToken);
@@ -47,7 +47,7 @@ public class GoogleGenAI : IDisposable
         public async Task<GenerateContentResponse> GenerateContentAsync(GenerateContentRequest request, CancellationToken cancellationToken = default)
         {
             var response = await ai.HttpClient.PostAsJsonAsync(
-                $"{BaseUrl}/{request.Model}:generateContent?key={ai.ApiKey}",
+                $"{ai.BaseUrl}/{request.Model}:generateContent?key={ai.ApiKey}",
                 request,
                 GemiNetJsonSerializerContext.Default.GetTypeInfo<GenerateContentRequest>()!,
                 cancellationToken)
@@ -64,7 +64,7 @@ public class GoogleGenAI : IDisposable
         public async IAsyncEnumerable<GenerateContentResponse> StreamGenerateContentAsync(GenerateContentRequest request, [EnumeratorCancellation] CancellationToken cancellationToken)
         {
             var response = await ai.HttpClient.PostAsJsonAsync(
-                $"{BaseUrl}/{request.Model}:streamGenerateContent?key={ai.ApiKey}",
+                $"{ai.BaseUrl}/{request.Model}:streamGenerateContent?key={ai.ApiKey}",
                 request,
                 GemiNetJsonSerializerContext.Default.GetTypeInfo<GenerateContentRequest>()!,
                 cancellationToken)
@@ -89,7 +89,7 @@ public class GoogleGenAI : IDisposable
         public async Task<CountTokensResponse> CountTokensAsync(CountTokensRequest request, CancellationToken cancellationToken = default)
         {
             var response = await ai.HttpClient.PostAsJsonAsync(
-                $"{BaseUrl}/{request.Model}:countTokens?key={ai.ApiKey}",
+                $"{ai.BaseUrl}/{request.Model}:countTokens?key={ai.ApiKey}",
                 request,
                 GemiNetJsonSerializerContext.Default.GetTypeInfo<CountTokensRequest>()!,
                 cancellationToken)
@@ -109,7 +109,7 @@ public class GoogleGenAI : IDisposable
             if (request.Contents.Count == 1)
             {
                 response = await ai.HttpClient.PostAsJsonAsync(
-                    $"{BaseUrl}/{request.Model}:embedContent?key={ai.ApiKey}",
+                    $"{ai.BaseUrl}/{request.Model}:embedContent?key={ai.ApiKey}",
                     new()
                     {
                         Content = request.Contents[0],
@@ -136,7 +136,7 @@ public class GoogleGenAI : IDisposable
                 }
 
                 response = await ai.HttpClient.PostAsJsonAsync(
-                    $"{BaseUrl}/{request!.Model}:batchEmbedContents?key={ai.ApiKey}",
+                    $"{ai.BaseUrl}/{request!.Model}:batchEmbedContents?key={ai.ApiKey}",
                     new()
                     {
                         Requests = requests,
@@ -298,7 +298,7 @@ public class GoogleGenAI : IDisposable
 
         public async Task<File> GetAsync(GetFileRequest request, CancellationToken cancellationToken = default)
         {
-            var response = await ai.HttpClient.GetAsync($"{BaseUrl}/{request.Name}", cancellationToken)
+            var response = await ai.HttpClient.GetAsync($"{ai.BaseUrl}/{request.Name}", cancellationToken)
                 .ConfigureAwait(ai.ConfigureAwait);
 
             if (!response.IsSuccessStatusCode) await ai.ThrowFromErrorResponseAsync(response, cancellationToken);
@@ -319,7 +319,7 @@ public class GoogleGenAI : IDisposable
                 (null, null) => $"key={ai.ApiKey}",
             };
 
-            var response = await ai.HttpClient.GetAsync($"{BaseUrl}/files?{queryParameters}", cancellationToken)
+            var response = await ai.HttpClient.GetAsync($"{ai.BaseUrl}/files?{queryParameters}", cancellationToken)
                 .ConfigureAwait(ai.ConfigureAwait);
 
             if (!response.IsSuccessStatusCode) await ai.ThrowFromErrorResponseAsync(response, cancellationToken);
@@ -332,7 +332,7 @@ public class GoogleGenAI : IDisposable
 
         public async Task DeleteAsync(DeleteFileRequest request, CancellationToken cancellationToken = default)
         {
-            var response = await ai.HttpClient.DeleteAsync($"{BaseUrl}/{request.Name}", cancellationToken)
+            var response = await ai.HttpClient.DeleteAsync($"{ai.BaseUrl}/{request.Name}", cancellationToken)
                 .ConfigureAwait(ai.ConfigureAwait);
 
             if (!response.IsSuccessStatusCode) await ai.ThrowFromErrorResponseAsync(response, cancellationToken);
@@ -355,7 +355,7 @@ public class GoogleGenAI : IDisposable
                 ToolConfig = request.ToolConfig,
             };
 
-            var response = await ai.HttpClient.PostAsJsonAsync($"{BaseUrl}/cachedContents?key={ai.ApiKey}", content, GemiNetJsonSerializerContext.Default.GetTypeInfo<CachedContent>()!, cancellationToken);
+            var response = await ai.HttpClient.PostAsJsonAsync($"{ai.BaseUrl}/cachedContents?key={ai.ApiKey}", content, GemiNetJsonSerializerContext.Default.GetTypeInfo<CachedContent>()!, cancellationToken);
 
             if (!response.IsSuccessStatusCode) await ai.ThrowFromErrorResponseAsync(response, cancellationToken);
 
@@ -373,7 +373,7 @@ public class GoogleGenAI : IDisposable
                 (null, null) => $"key={ai.ApiKey}",
             };
 
-            var response = await ai.HttpClient.GetAsync($"{BaseUrl}/cachedContents?{queryParameters}", cancellationToken)
+            var response = await ai.HttpClient.GetAsync($"{ai.BaseUrl}/cachedContents?{queryParameters}", cancellationToken)
                 .ConfigureAwait(ai.ConfigureAwait);
 
             if (!response.IsSuccessStatusCode) await ai.ThrowFromErrorResponseAsync(response, cancellationToken);
@@ -386,7 +386,7 @@ public class GoogleGenAI : IDisposable
 
         public async Task<CachedContent> GetAsync(GetChachedContentRequest request, CancellationToken cancellationToken = default)
         {
-            var response = await ai.HttpClient.GetAsync($"{BaseUrl}/cachedContents?{request.Name}?key={ai.ApiKey}", cancellationToken)
+            var response = await ai.HttpClient.GetAsync($"{ai.BaseUrl}/cachedContents?{request.Name}?key={ai.ApiKey}", cancellationToken)
                 .ConfigureAwait(ai.ConfigureAwait);
 
             if (!response.IsSuccessStatusCode) await ai.ThrowFromErrorResponseAsync(response, cancellationToken);
@@ -399,7 +399,7 @@ public class GoogleGenAI : IDisposable
 
         public async Task<CachedContent> PatchAsync(PatchChachedContentRequest request, CancellationToken cancellationToken = default)
         {
-            var url = $"{BaseUrl}/cachedContents?{request.Name}?key={ai.ApiKey}{(request.UpdateMask == null ? "" : $"?updateMask={request.UpdateMask}")}";
+            var url = $"{ai.BaseUrl}/cachedContents?{request.Name}?key={ai.ApiKey}{(request.UpdateMask == null ? "" : $"?updateMask={request.UpdateMask}")}";
             var response = await ai.HttpClient.PatchAsJsonAsync(url, request.Config, GemiNetJsonSerializerContext.Default.GetTypeInfo<PatchChachedContentConfig>()!, cancellationToken)
                 .ConfigureAwait(ai.ConfigureAwait);
 
@@ -413,7 +413,7 @@ public class GoogleGenAI : IDisposable
 
         public async Task DeleteAsync(DeleteChachedContentRequest request, CancellationToken cancellationToken = default)
         {
-            var response = await ai.HttpClient.DeleteAsync($"{BaseUrl}/cachedContents?{request.Name}?key={ai.ApiKey}", cancellationToken)
+            var response = await ai.HttpClient.DeleteAsync($"{ai.BaseUrl}/cachedContents?{request.Name}?key={ai.ApiKey}", cancellationToken)
                 .ConfigureAwait(ai.ConfigureAwait);
 
             if (!response.IsSuccessStatusCode) await ai.ThrowFromErrorResponseAsync(response, cancellationToken);
@@ -459,7 +459,7 @@ public class GoogleGenAI : IDisposable
 
     public HttpClient HttpClient { get; }
 
-    const string BaseUrl = "https://generativelanguage.googleapis.com/v1beta";
+    public string BaseUrl { get; } = "https://generativelanguage.googleapis.com/v1beta";
 
     async Task ThrowFromErrorResponseAsync(HttpResponseMessage response, CancellationToken cancellationToken)
     {

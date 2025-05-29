@@ -3,6 +3,7 @@
     <Project Path="sandbox/ConsoleApp1/ConsoleApp1.csproj" />
   </Folder>
   <Folder Name="/src/">
+    <Project Path="src/GemiNet.Extensions.AI/GemiNet.Extensions.AI.csproj" />
     <Project Path="src/GemiNet/GemiNet.csproj" />
   </Folder>
 </Solution>
