@@ -1,10 +1,9 @@
 ﻿using System.Runtime.CompilerServices;
-using System.Text.Json;
 using Microsoft.Extensions.AI;
 
 namespace GemiNet.Extensions.AI;
 
-sealed class GoogleGenAIChatClient(GoogleGenAI ai, string model, IServiceProvider? serviceProvider = null) : IChatClient
+internal sealed class GoogleGenAIChatClient(GoogleGenAI ai, string model, IServiceProvider? serviceProvider = null) : IChatClient
 {
     public object? GetService(Type serviceType, object? serviceKey = null)
     {
