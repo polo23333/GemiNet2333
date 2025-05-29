@@ -2,7 +2,7 @@ using Microsoft.Extensions.AI;
 
 namespace GemiNet.Extensions.AI;
 
-public sealed class GoogleGenAIEmbeddingGenerator(GoogleGenAI ai, string model) : IEmbeddingGenerator<string, Embedding<float>>
+internal sealed class GoogleGenAIEmbeddingGenerator(GoogleGenAI ai, string model) : IEmbeddingGenerator<string, Embedding<float>>
 {
     const int GeminiEmbeddingSize = 768;
 
