@@ -9,7 +9,7 @@ Gemini Developer API client for .NET and Unity
 
 ## 概要
 
-GemiNetはNET/Unity向けのGemini Developer APIクライアントライブラリです。GemiNetは公式のTypeScript SDK([js-genai](https://github.com/googleapis/js-genai))のAPIに基づいて設計されており、他のライブラリ([Google_GenerativeAI](https://github.com/gunpal5/Google_GenerativeAI), [GeminiSharp](https://github.com/dprakash2101/GeminiSharp), etc.)と比較して扱いやすいAPIを提供します。また、Microsoft.Extensions.AIやMicrosoft.Extensions.DependencyInjectionなどの抽象化層に対応した拡張パッケージを提供することで、アプリケーションとの統合をよりスムーズに行えるようになっています。
+GemiNetはNET/Unity向けのGemini Developer APIクライアントライブラリです。GemiNetは公式のTypeScript SDK([js-genai](https://github.com/googleapis/js-genai))のAPIに基づいて設計されており、他のライブラリ([Google_GenerativeAI](https://github.com/gunpal5/Google_GenerativeAI), [GeminiSharp](https://github.com/dprakash2101/GeminiSharp), etc.)と比較して扱いやすいAPIを提供します。また、Microsoft.Extensions.AIの抽象化層に対応した拡張パッケージを提供することで、アプリケーションとの統合をよりスムーズに行えるようになっています。
 
 ## インストール
 
