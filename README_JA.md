@@ -31,7 +31,7 @@ Install-Package GemiNet
 
 ### Unity
 
-NugetForUnityを用いることでUnityでGemiNetを利用可能です。詳細は[Unity](#unity-1)の項目を参照してください。
+[NugetForUnity](https://github.com/GlitchEnzo/NuGetForUnity)を用いることでUnityでGemiNetを利用可能です。詳細はNuGetForUnityのREADMEを参照してください。
 
 ## クイックスタート
 

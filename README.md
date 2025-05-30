@@ -31,7 +31,7 @@ Install-Package GemiNet
 
 ### Unity
 
-You can use GemiNet in Unity via NugetForUnity. For details, see the [Unity](#unity-1) section.
+You can use GemiNet in Unity by using [NuGetForUnity](https://github.com/GlitchEnzo/NuGetForUnity). For details, please refer to the NuGetForUnity README.
 
 ## Quick Start
 
