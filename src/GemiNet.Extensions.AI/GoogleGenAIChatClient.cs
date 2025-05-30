@@ -23,7 +23,7 @@ internal sealed class GoogleGenAIChatClient(GoogleGenAI ai, string model, IServi
     {
         var request = CreateGenerateContentRequest(messages, options);
 
-        await foreach (var response in ai.Models.StreamGenerateContentAsync(request, cancellationToken))
+        await foreach (var response in ai.Models.GenerateContentStreamAsync(request, cancellationToken))
         {
             if (response.Candidates == null || response.Candidates.Length == 0) continue;
 

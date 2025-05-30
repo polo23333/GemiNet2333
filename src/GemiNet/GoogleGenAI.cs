@@ -61,7 +61,7 @@ public class GoogleGenAI : IDisposable
             return result!;
         }
 
-        public async IAsyncEnumerable<GenerateContentResponse> StreamGenerateContentAsync(GenerateContentRequest request, [EnumeratorCancellation] CancellationToken cancellationToken)
+        public async IAsyncEnumerable<GenerateContentResponse> GenerateContentStreamAsync(GenerateContentRequest request, [EnumeratorCancellation] CancellationToken cancellationToken)
         {
             var response = await ai.HttpClient.PostAsJsonAsync(
                 $"{ai.BaseUrl}/{request.Model}:streamGenerateContent?key={ai.ApiKey}",
