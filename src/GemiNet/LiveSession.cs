@@ -29,7 +29,7 @@ sealed class LiveSession(GoogleGenAI ai) : ILiveSession
             Setup = setup,
         }, GemiNetJsonSerializerContext.Default.GetTypeInfo<BidiGenerateContent>()!);
 
-        await socket.SendAsync(json, WebSocketMessageType.Text, WebSocketMessageFlags.EndOfMessage, cancellationToken);
+        await socket.SendAsync(json.AsMemory(), WebSocketMessageType.Text, true, cancellationToken);
     }
 
     public async ValueTask SendRealtimeInputAsync(BidiGenerateContentRealtimeInput realtimeInput, CancellationToken cancellationToken = default)
@@ -39,7 +39,7 @@ sealed class LiveSession(GoogleGenAI ai) : ILiveSession
             RealtimeInput = realtimeInput
         }, GemiNetJsonSerializerContext.Default.GetTypeInfo<BidiGenerateContent>()!);
 
-        await socket.SendAsync(json, WebSocketMessageType.Text, WebSocketMessageFlags.EndOfMessage, cancellationToken);
+        await socket.SendAsync(json.AsMemory(), WebSocketMessageType.Text, true, cancellationToken);
     }
 
     public async ValueTask SendClientContentAsync(BidiGenerateContentClientContent clientContent, CancellationToken cancellationToken = default)
@@ -49,7 +49,7 @@ sealed class LiveSession(GoogleGenAI ai) : ILiveSession
             ClientContent = clientContent,
         }, GemiNetJsonSerializerContext.Default.GetTypeInfo<BidiGenerateContent>()!);
 
-        await socket.SendAsync(json, WebSocketMessageType.Text, WebSocketMessageFlags.EndOfMessage, cancellationToken);
+        await socket.SendAsync(json.AsMemory(), WebSocketMessageType.Text, true, cancellationToken);
     }
 
     public async ValueTask SendToolResponseAsync(BidiGenerateContentToolResponse toolResponse, CancellationToken cancellationToken = default)
@@ -59,7 +59,7 @@ sealed class LiveSession(GoogleGenAI ai) : ILiveSession
             ToolResponse = toolResponse,
         }, GemiNetJsonSerializerContext.Default.GetTypeInfo<BidiGenerateContent>()!);
 
-        await socket.SendAsync(json, WebSocketMessageType.Text, WebSocketMessageFlags.EndOfMessage, cancellationToken);
+        await socket.SendAsync(json.AsMemory(), WebSocketMessageType.Text, true, cancellationToken);
     }
 
     public async IAsyncEnumerable<BidiGenerateContentServerMessage> ReceiveAsync([EnumeratorCancellation] CancellationToken cancellationToken = default)
