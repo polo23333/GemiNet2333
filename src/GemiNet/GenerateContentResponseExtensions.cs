@@ -19,6 +19,7 @@ public static class GenerateContentResponseExtensions
                 if (part.Text != null)
                 {
                     buffer.AddRange(part.Text);
+                    anyTextPartFound = true;
                 }
             }
         }
@@ -145,6 +146,7 @@ public static class GenerateContentResponseExtensions
             if (part.InlineData != null)
             {
                 buffer.AddRange(Convert.FromBase64String(part.InlineData.Data));
+                anyDataPartFound = true;
             }
         }
 
