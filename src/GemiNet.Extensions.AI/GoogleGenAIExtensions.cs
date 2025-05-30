@@ -9,7 +9,7 @@ public static class GoogleGenAIExtensions
         return new GoogleGenAIChatClient(ai, model);
     }
 
-    public static IEmbeddingGenerator<string, Embedding<float>> AsIEmbeddingGenerator(this GoogleGenAI ai, string model)
+    public static IEmbeddingGenerator<string, Embedding<float>> AsEmbeddingGenerator(this GoogleGenAI ai, string model)
     {
         return new GoogleGenAIEmbeddingGenerator(ai, model);
     }

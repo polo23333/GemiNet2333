@@ -7,7 +7,7 @@ public interface IModels
     Task<Model> GetAsync(string name, CancellationToken cancellationToken = default);
     Task<ListModelsResponse> ListAsync(ListModelsRequest request, CancellationToken cancellationToken = default);
     Task<GenerateContentResponse> GenerateContentAsync(GenerateContentRequest request, CancellationToken cancellationToken = default);
-    IAsyncEnumerable<GenerateContentResponse> StreamGenerateContentAsync(GenerateContentRequest request, CancellationToken cancellationToken = default);
+    IAsyncEnumerable<GenerateContentResponse> GenerateContentStreamAsync(GenerateContentRequest request, CancellationToken cancellationToken = default);
 
     Task<CountTokensResponse> CountTokensAsync(CountTokensRequest request, CancellationToken cancellationToken = default);
 
