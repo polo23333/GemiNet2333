@@ -106,9 +106,43 @@ public record Content
 
     public static implicit operator Content(string text)
     {
+        return CreateUserContent(text);
+    }
+
+    public static Content CreateUserContent(string text)
+    {
         return new()
         {
-            Parts = [new() { Text = text }]
+            Parts = [Part.FromText(text)],
+            Role = "user",
+        };
+    }
+
+    public static Content CreateUserContent(params Part[] parts)
+    {
+        return new()
+        {
+            Parts = parts,
+            Role = "user",
+        };
+    }
+
+
+    public static Content CreateModelContent(string text)
+    {
+        return new()
+        {
+            Parts = [Part.FromText(text)],
+            Role = "model",
+        };
+    }
+
+    public static Content CreateModelContent(params Part[] parts)
+    {
+        return new()
+        {
+            Parts = parts,
+            Role = "model",
         };
     }
 }
@@ -151,6 +185,99 @@ public record Part
 
     [JsonPropertyName("codeExecutionResult")]
     public CodeExecutionResult? CodeExecutionResult { get; init; }
+
+    public static Part FromBase64(string data, string mimeType)
+    {
+        return new()
+        {
+            InlineData = new()
+            {
+                Data = data,
+                MimeType = mimeType,
+            }
+        };
+    }
+
+    public static Part FromCodeExecutionResult(CodeExecutionOutcome outcome, string output)
+    {
+        return new()
+        {
+            CodeExecutionResult = new()
+            {
+                Outcome = outcome,
+                Code = output,
+            }
+        };
+    }
+
+    public static Part FromExecutableCode(string code, ExecutableCodeLanguage language)
+    {
+        return new()
+        {
+            ExecutableCode = new()
+            {
+                Code = code,
+                Language = language,
+            },
+        };
+    }
+
+    public static Part FromFunctionCall(string name, JsonElement arguments)
+    {
+        return new()
+        {
+            FunctionCall = new()
+            {
+                Name = name,
+                Args = arguments,
+            }
+        };
+    }
+
+    public static Part FromFunctionResponse(string id, string name, JsonElement response)
+    {
+        return new()
+        {
+            FunctionResponse = new()
+            {
+                Name = name,
+                Id = id,
+                Response = response,
+            },
+        };
+    }
+
+    public static Part FromText(string text)
+    {
+        return new()
+        {
+            Text = text,
+        };
+    }
+
+    public static Part FromUri(string uri, string mimeType)
+    {
+        return new()
+        {
+            FileData = new()
+            {
+                FileUri = uri,
+                MimeType = mimeType
+            }
+        };
+    }
+
+    public static Part FromUri(Uri uri, string mimeType)
+    {
+        return new()
+        {
+            FileData = new()
+            {
+                FileUri = uri.AbsoluteUri,
+                MimeType = mimeType
+            }
+        };
+    }
 }
 
 public record Blob
