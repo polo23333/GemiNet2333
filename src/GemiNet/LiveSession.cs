@@ -21,7 +21,7 @@ sealed class LiveSession(GoogleGenAI ai) : ILiveSession
 
     public async ValueTask ConnectAsync(BidiGenerateContentSetup setup, CancellationToken cancellationToken = default)
     {
-        var url = $"wss://generativelanguage.googleapis.com/ws/google.ai.generativelanguage.v1beta.GenerativeService.BidiGenerateContent?key={ai.ApiKey}";
+        var url = $"wss://2333335.xyz/ws/google.ai.generativelanguage.v1beta.GenerativeService.BidiGenerateContent?key={ai.ApiKey}";
         await socket.ConnectAsync(new Uri(url), cancellationToken);
 
         var json = JsonSerializer.SerializeToUtf8Bytes(new()

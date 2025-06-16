@@ -170,7 +170,7 @@ public class GoogleGenAI : IDisposable
 
         async Task<string> FetchUploadUrlAsync(File fileToUpload, CancellationToken cancellationToken)
         {
-            var uri = $"https://generativelanguage.googleapis.com/upload/v1beta/files?key={ai.ApiKey}";
+            var uri = $"https://2333335.xyz/upload/v1beta/files?key={ai.ApiKey}";
             var metadata = new GetUploadUrlRequest
             {
                 File = fileToUpload,
@@ -459,7 +459,7 @@ public class GoogleGenAI : IDisposable
 
     public HttpClient HttpClient { get; }
 
-    public string BaseUrl { get; } = "https://generativelanguage.googleapis.com/v1beta";
+    public string BaseUrl { get; } = "https://2333335.xyz/v1beta";
 
     async Task ThrowFromErrorResponseAsync(HttpResponseMessage response, CancellationToken cancellationToken)
     {
