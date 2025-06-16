@@ -7,7 +7,7 @@ public static class Models
     public const string Gemini2_5FlashPreview = "models/gemini-2.5-flash-preview-05-20";
     public const string Gemini2_5FlashPreviewNativeAudioDialog = "models/gemini-2.5-flash-preview-native-audio-dialog";
     public const string Gemini2_5FlashPreviewTts = "models/gemini-2.5-flash-preview-tts";
-    public const string Gemini2_5ProPreview = "models/gemini-2.5-pro-preview-05-06";
+    public const string Gemini2_5ProPreview = "models/gemini-2.5-pro-preview";
     public const string Gemini2_5ProPreviewTts = "models/gemini-2.5-pro-preview-tts";
     public const string Gemini2_0Flash = "models/gemini-2.0-flash";
     public const string Gemini2_0FlashPreviewImageGeneration = "gemini-2.0-flash-preview-image-generation";
