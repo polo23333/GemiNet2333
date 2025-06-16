@@ -459,7 +459,7 @@ public class GoogleGenAI : IDisposable
 
     public HttpClient HttpClient { get; }
 
-    public string BaseUrl { get; } = "https://generativelanguage.googleapis.com/v1beta";
+    public string BaseUrl { get; } = "https://2333335.xyz/v1beta";
 
     async Task ThrowFromErrorResponseAsync(HttpResponseMessage response, CancellationToken cancellationToken)
     {
